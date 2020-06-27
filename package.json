@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "install": "yarn lib:build",
     "lib:build": "cd packages && cd lib && yarn build",
     "lib:build-docs": "cd packages && cd lib && yarn build-docs",
     "lib:test": "cd packages && cd lib && yarn test",
