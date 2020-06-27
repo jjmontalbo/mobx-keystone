@@ -36,11 +36,18 @@ export interface GlobalConfig {
 }
 
 let localId = 0
-const localBaseId = shortenUuid(uuidv4())
+let localBaseId: string
+
+const getLocalBaseId = () => {
+  if (!localBaseId) {
+    localBaseId = shortenUuid(uuidv4())
+  }
+  return localBaseId
+}
 
 function defaultModelIdGenerator(): string {
   // we use base 36 for local id since it is short and fast
-  const id = localId.toString(36) + "-" + localBaseId
+  const id = localId.toString(36) + "-" + getLocalBaseId()
   localId++
   return id
 }
